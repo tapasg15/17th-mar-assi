@@ -1,0 +1,157 @@
+Q1. What is MongoDB? Explain non-relational databases in short. In which scenarios it is preferred to use
+MongoDB over SQL databases?
+Ans:- MongoDB is a document-oriented NoSQL database. NoSQL databases are a type of database that do not follow the traditional relational database model. Relational databases store data in tables, with each row in the table representing a record and each column in the table representing a field. NoSQL databases, on the other hand, store data in a variety of ways, including documents, graphs, and key-value pairs.
+
+MongoDB stores data in documents, which are JSON-like objects. Documents can have a variety of fields, and the fields can be of different types. This makes MongoDB flexible and scalable, as it can store a variety of data types in the same database.
+
+Here are some of the benefits of using MongoDB:
+
+> Flexibility: MongoDB can store a variety of data types in the same database, which makes it flexible for a variety of applications.
+> Scalability: MongoDB is scalable, both horizontally and vertically. This means that it can be scaled up to handle large amounts of data, and it can also be scaled out to handle more users.
+> Performance: MongoDB is a high-performance database, and it can handle a lot of concurrent requests.
+Ease of use: MongoDB is easy to use, both for developers and for end users.
+Here are some scenarios where it is preferred to use MongoDB over SQL databases:
+
+When the data is unstructured or semi-structured: MongoDB is a good choice for storing unstructured or semi-structured data. This is because documents in MongoDB can have a variety of fields, and the fields can be of different types.
+When the data is changing rapidly: MongoDB is a good choice for storing data that is changing rapidly. This is because MongoDB is a document-oriented database, and documents can be updated quickly and easily.
+When the database needs to be scalable: MongoDB is a good choice for databases that need to be scalable, both horizontally and vertically. This is because MongoDB is a distributed database, and it can be scaled out to handle more users and more data.
+Here are some of the drawbacks of using MongoDB:
+
+Not as mature as SQL databases: MongoDB is a newer database technology than SQL databases, and it is not as mature. This means that there may be fewer features and less documentation available for MongoDB than for SQL databases.
+Not as well-suited for complex queries: MongoDB is not as well-suited for complex queries as SQL databases. This is because MongoDB is a document-oriented database, and it does not have the same query capabilities as SQL databases.
+Not as well-suited for OLTP workloads: MongoDB is not as well-suited for OLTP workloads as SQL databases. This is because MongoDB is a document-oriented database, and it does not have the same performance characteristics as SQL databases for OLTP workloads.
+
+Q2. State and Explain the features of MongoDB.
+Ans:- MongoDB is a document-oriented NoSQL database that offers a number of features that make it a good choice for a variety of applications. Some of the key features of MongoDB include:
+
+> Flexibility: MongoDB can store a variety of data types in the same database, which makes it flexible for a variety of applications. For example, you could store customer data, product data, and order data in the same database.
+> Scalability: MongoDB is scalable, both horizontally and vertically. This means that it can be scaled up to handle large amounts of data, and it can also be scaled out to handle more users.
+> Ease of use: MongoDB is easy to use, both for developers and for end users. The query language is similar to JSON, and there are a number of tools available to help you manage your data.
+> Replication: MongoDB supports replication, which means that your data can be stored on multiple servers. This provides redundancy and fault tolerance in case of a server failure.
+> Sharding: MongoDB supports sharding, which allows you to distribute your data across multiple servers. This can be helpful for handling large amounts of data or for improving performance.
+> Security: MongoDB supports a variety of security features, including authentication, authorization, and encryption. This helps to protect your data from unauthorized access.
+Document validation: MongoDB supports document validation, which allows you to specify the structure of your documents. This helps to ensure that your data is consistent and accurate.
+> Indexing: MongoDB supports indexing, which allows you to speed up queries on your data. You can create indexes on individual fields or on multiple fields.
+> Aggregation: MongoDB supports aggregation, which allows you to perform complex queries on your data. You can use aggregation to group data, calculate statistics, and perform other operations.
+Overall, MongoDB is a powerful and versatile database that offers a wide range of features. It is a good choice for a variety of applications, including:
+
+> Web applications: MongoDB can be used to store data for web applications, such as user profiles, product catalogs, and order history.
+> Real-time applications: MongoDB can be used to store data for real-time applications, such as chat applications and gaming applications.
+> Big data applications: MongoDB can be used to store and analyze large amounts of data.
+IoT applications: MongoDB can be used to store data from IoT devices.
+
+Q3. Write a code to connect MongoDB to Python. Also, create a database and a collection in MongoDB.
+Ans:- Here is the code to connect MongoDB to python.
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017")
+
+# Create a database
+db = client["my_database"]
+
+# Create a collection
+collection = db["my_collection"]
+
+# Insert a document into the collection
+document = {"name": "John Doe", "age": 30}
+collection.insert_one(document)
+
+# Print the documents in the collection
+for document in collection.find():
+    print(document)
+
+
+Q4. Using the database and the collection created in question number 3, write a code to insert one record,
+and insert many records. Use the find() and find_one() methods to print the inserted record.
+Ans:- 
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017")
+
+# Create a database
+db = client["my_database"]
+
+# Create a collection
+collection = db["my_collection"]
+
+# Insert one record
+document = {"name": "John Doe", "age": 30}
+collection.insert_one(document)
+
+# Insert many records
+documents = [
+    {"name": "Jane Doe", "age": 25},
+    {"name": "Peter Smith", "age": 40},
+    {"name": "Mary Johnson", "age": 20},
+]
+collection.insert_many(documents)
+
+# Print the documents in the collection
+for document in collection.find():
+    print(document)
+
+# Find the document with the name "John Doe"
+document = collection.find_one({"name": "John Doe"})
+print(document)
+
+
+Q5. Explain how you can use the find() method to query the MongoDB database. Write a simple code to
+demonstrate this.
+Ans:- The find() method is used to query the MongoDB database. It takes a query object as its argument, and returns a cursor object. The cursor object can be used to iterate over the documents that match the query.
+
+The query object is a dictionary that specifies the criteria for the query. The keys of the dictionary are the field names, and the values of the dictionary are the values that the fields should match.
+
+> Code to demonstrate this method
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017")
+
+# Create a database
+db = client["my_database"]
+
+# Create a collection
+collection = db["my_collection"]
+
+# Find all documents where the name is John Doe
+documents = collection.find({"name": "John Doe"})
+
+# Print the documents
+for document in documents:
+    print(document)
+
+Q6. Explain the sort() method. Give an example to demonstrate sorting in MongoDB.
+Ans:- The sort() method is used to sort the documents in a MongoDB collection. It takes a sort object as its argument, and returns a cursor object. The cursor object can be used to iterate over the documents in the collection, in the sorted order.
+
+The sort object is a dictionary that specifies the fields to sort by, and the order of the sort. The keys of the dictionary are the field names, and the values of the dictionary are the sort directions. The sort directions can be 1 for ascending order, or -1 for descending order. For example, the following sort object will sort the documents in the collection by the name field, in ascending order
+
+> To Demonstrate this
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017")
+
+# Create a database
+db = client["my_database"]
+
+# Create a collection
+collection = db["my_collection"]
+
+# Find all documents and sort by name in ascending order
+documents = collection.find().sort("name", 1)
+
+# Print the documents
+for document in documents:
+    print(document)
+
+Q7. Explain why delete_one(), delete_many(), and drop() is used.
+Ans:- The delete_one(), delete_many(), and drop() methods are used to delete documents from a MongoDB collection.
+
+> The delete_one() method deletes a single document from the collection.
+> The delete_many() method deletes multiple documents from the collection.
+> The drop() method deletes the entire collection.
+
+These methods are used to delete documents from a collection when they are no longer needed. For example, you might use the delete_one() method to delete a document that has been expired, or you might use the delete_many() method to delete a batch of documents that have been updated. You might use the drop() method to delete an entire collection when you no longer need it.
+
